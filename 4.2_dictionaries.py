@@ -23,26 +23,51 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
+# 1. In: nothing typed by the user. The campaign is written directly
+#    in the program as a dictionary.
+# 2. Process: one field is read, one field is changed, one field is removed,
+#    then a loop goes through the dictionary. At the end the program asks
+#    for a field that does not exist, in a safe way.
+# 3. Out: the campaign name, the new budget, then one line per remaining
+#    field ("field: value"), then the answer for the missing field.
 # 4. My object, my five fields, and why those:
-
+#    Object: an advertising campaign.
+#    - name:       to tell campaigns apart in reports.
+#    - channel:    to know where the money goes (Meta Ads, Google Ads...).
+#    - budget:     the number a manager asks about first.
+#    - status:     to know if it is active, paused or finished.
+#    - start_date: to compare results over time.
+#    A sixth field, draft_note, is temporary: I add it only to practise removing.
 
 # Your code below
-name = "Artem"
-age = 21 
+campaign = {
+    "name": "Winter Sale",
+    "channel": "Meta Ads",
+    "budget": 283000,
+    "status": "active",
+    "start_date": "2026-12-01",
+    "draft_note": "check with manager",
+}
 
-name_2 ="John"
-age_2 = 25
+# read
+print("Campaign name:", campaign["name"])
 
-name_3 = "Mike"
-age_3 = 30
+# change
+campaign["budget"] = 310000
+print("New budget:", campaign["budget"])
 
-person = { "name":"Artem", "age":21, "city": "Odesa" }
+# remove
+del campaign["draft_note"]
 
-#preparing the dicitonary
-print("The dictionary of the person is: ", person)
+# display every field with its value
+for field, value in campaign.items():
+    print(field, ":", value)
 
-# adding a value inside the dictionary
-print ("The dicitonary after adding the value of the item ot it")
+# a field that does not exist, made safe with .get()
+print("End date:", campaign.get("end_date", "not set"))
+
+# CHECK: first I wrote print(campaign["end_date"]) instead of the .get() line.
+# What happened: the program printed all the fields, then crashed on line 67
+# with KeyError: 'end_date', because the dictionary has no field with that name.
+# Then I replaced it with .get("end_date", "not set") and it printed: not set
+# The program no longer crashes, it prints the default value I chose.
