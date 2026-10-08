@@ -26,37 +26,36 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. What my list is about, and what I computed from it:
+# 1. In:nothing typed by the user. The data (8 monthly campaign budgets)
+# is written directly in the program.
+# 2. Process:the list is stored in a variable, one item is picked by its
+#    position, a sorted copy is made, and the total, the average and the
+#    biggest budget are calculated with sum(), len() and max()
+# 3. Out: the whole list, the first budget, the sorted list, the total,
+#    the average and the maximum.
+# 4. What my list is about, and what I computed from it:The list holds monthly budgets of 8 ad campaigns. I computed the total
+#    (how much I spend in all), the average (what a "typical" campaign costs)
+#    and the maximum (the most expensive campaign). The total is interesting
+#    because it is the number a manager asks about first. Comparing the
+#    maximum with the average shows if one campaign eats most of the money.
 
 
 # Your code below
-number_1 = 2
-number_2 = 3
-number_3 = 4
-number_4 = 5
+budgets = [283000, 150000, 95000, 210000, 60000, 120000, 45000, 175000]
 
-print(number_1)
-print(number_2)
-print(number_3)
-print(number_4)
+print("All budgets:", budgets)
+print("First budget:", budgets[0])
+print("Sorted budgets:", sorted(budgets))
 
-list_of_numbers = [10, 9, 1, 7, 8, 6, 2, 3, 4, 5]
-print("Listing all of the numbers in the list")
-print(list_of_numbers)
-print("Listing the third number in the list")
-print(list_of_numbers[2])
+total = sum(budgets)
+average = total / len(budgets)
+biggest = max(budgets)
 
-# sorting the list
-print("The list of numbers after sorted")
-list_of_numbers.sort()
-print(list_of_numbers)
+print("Total:", total)
+print("Average:", average)
+print("Biggest:", biggest)
 
-# removing the last number in the list
-list_of_numbers.pop()
-
-# list of numbers after removing the last
-print("The list of numbers after removing the last number from the list")
-print(list_of_numbers)
+# CHECK: I worked out by hand the sum of three items:
+# 283000 + 150000 + 95000 = 528000
+# The program agrees: yes. I temporarily changed the list to these three
+# numbers, ran the program, and it printed Total: 528000.
